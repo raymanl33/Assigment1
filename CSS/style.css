@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    background-color: #ebbcba;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    grid-template-rows: 5rem 1fr 5rem;
+    grid-template-areas: 
+    's h h'
+    's m m'
+    'f f f';
+    width: 100vw;
+    height: 100vh;  
+}
+
+.header{
+    grid-area: h;
+    text-align: right;
+}
+
+
+.Navigation {
+    display: inline;
+    padding-right: 1rem;
+    
+
+}
+
+footer {
+    grid-area: f;
+    text-align: center;
+    position:relative; 
+    top: 49px;
+    font-family: 'Redressed', cursive;
+}
