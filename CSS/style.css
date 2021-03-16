@@ -119,7 +119,6 @@ h1 + ul, .background, .background > a {
     font-size: 1rem;
 }
 
-
 footer {
     grid-area: f;
     text-align: center;
@@ -128,7 +127,7 @@ footer {
     font-family: 'Redressed', cursive;
 }
 
-@media screen and (max-width: 980px) {
+@media screen and (max-width: 814px) {
     .note {
         grid-area: m;
         place-self: center;
@@ -136,6 +135,7 @@ footer {
         flex-direction: column;
         gap: 10px;
     }
+
     .close_button {
         grid-area: s;
         display:flex;
@@ -145,10 +145,8 @@ footer {
         font-size: 1rem;
         color: #3e8fb0;
         text-shadow: 1px 1px 1px #2a273f;
-    } 
-}
+    }
 
-@media screen and (max-width: 376px) {
     .note_container {
         display: grid;
         grid-template-columns: 3px 1fr;
@@ -157,10 +155,11 @@ footer {
         's h h'
         'm m m'
         'f f f';
-    width: 100vw;
     height: 100vh;  
     }
+
     .close_button {
         display: none;
-    }
+    } 
 }
+
