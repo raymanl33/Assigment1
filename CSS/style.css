@@ -1,24 +1,18 @@
 * {
     margin: 0;
-
+    background-color: #f2e9de;
 }
 
-.container {
-    display: grid;
-    grid-template-columns: 260px 1fr;
-    grid-template-rows: 5rem 1fr 5rem;
-    grid-template-areas: 
-    's h h'
-    's m m'
-    's f f';
-    width: 100vw;
-    height: 100vh; 
+a {
+    text-decoration: none;
+    color: #191724;
 }
 
 .header {
     grid-area: h;
     text-align: right;
-    background-color: #f2e9de; 
+    font-family: 'Roboto', sans-serif;
+
 }
 
 .Navigation {
@@ -29,36 +23,34 @@
 
 .open_button {
     grid-area: s;
-    border: 0;
     display:flex;
     font-size: 1rem;
     justify-self: start;
-    color: #3e8fb0;
+    color: #232136;
     background-color: #9ccfd8;
-    text-shadow: 1px 1px 1px #2a273f;
- 
+    text-shadow: 1px 1px 1px #817c9c;
+    border-radius: 25px;
 }
 
-/* .open_button:hover {
-    background-color: #9ccfd8;
-} */
-
-.note_button {
-    place-self: center;
+.create_button {
+    grid-area: m;
     border: 0;
     height: 100px;
     width: 300px;
-    font-size: 1rem;
-    color: #f2e9de;
-    text-shadow: 1px 1px 1px #000;
+    font-size: 25px;
+    color: #232136;
+    text-shadow: 1px 1px 1px #817c9c;
     border-radius: 10px;
 }
-/* 
-.note_button:hover {
-    background-color: #9ccfd8;
-} */
 
-
+.note_button {
+    border: 0;
+    height: 25px;
+    width: 25px;
+    font-size: 25px;
+    color: #232136;
+    text-shadow: 1px 1px 1px #817c9c;
+}
 
 .note_container {
     display: grid;
@@ -70,12 +62,7 @@
     's f f';
     width: 100vw;
     height: 100vh;  
-}
-
-button {
-    /* text-align: right; */
-}
-
+} 
 
 .close_button {
     grid-area: s;
@@ -83,26 +70,39 @@ button {
     flex-direction: column;
     gap: 12px;
     font-size: 1rem;
-    color: #3e8fb0;
+    color: #232136;
     text-shadow: 1px 1px 1px #2a273f;
+    background-color: #9ccfd8;
+    border-radius: 25px; 
+}
+
+h1 {
+    background-color: #9ccfd8;
+    font-size: 25px;
+    color: #191724;
+}
+
+h1 + ul, .background, .background > a {
     background-color: #9ccfd8;
 }
 
+.background{
+    list-style-type: none;  
+}
 
 .note {
     grid-area: m;
     place-self: center;
     display: flex;
     gap: 10px;
-   
 }
 
 #story {
     background-color: #e0def4;
+    border-radius: 25px;
 }
 
 .save_delete {
-    text-align: right;
     align-self: flex-end;
 }
 
@@ -119,9 +119,6 @@ button {
     font-size: 1rem;
 }
 
-label{
-    font-size: 2.5rem;
-}
 
 footer {
     grid-area: f;
@@ -154,7 +151,7 @@ footer {
 @media screen and (max-width: 376px) {
     .note_container {
         display: grid;
-        grid-template-columns: 260px 1fr;
+        grid-template-columns: 3px 1fr;
         grid-template-rows: 5rem 1fr 5rem;
         grid-template-areas: 
         's h h'
@@ -164,11 +161,11 @@ footer {
     height: 100vh;  
     }
     .close_button {
-        grid-area: s;
-        display:flex;
+        /* grid-area: s;
+        display:flex; */
         flex-direction: column;
         gap: 12px;
-        font-size: 1rem;
+        /* font-size: 1rem; */
         color: #3e8fb0;
         text-shadow: 1px 1px 1px #2a273f;
         background-color: #9ccfd8;
