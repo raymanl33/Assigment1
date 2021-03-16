@@ -107,14 +107,14 @@ h1 + ul, .background, .background > a {
 }
 
 .save{
-    color: #3e8fb0;
+    color: #286983;
     border: 0;
     padding-right: inherit;
     font-size: 1rem;
 }
 
 .delete {
-    color: #eb6f92;
+    color: #b4637a;
     border: 0;
     font-size: 1rem;
 }
