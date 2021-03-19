@@ -5,7 +5,7 @@
 
 a {
     text-decoration: none;
-    color: #191724;
+    color: #393552;
 }
 
 .header {
@@ -26,7 +26,6 @@ a {
     justify-self: start;
     color: #232136;
     background-color: #9ccfd8;
-    text-shadow: 1px 1px 1px #817c9c;
     border-radius: 25px;
 }
 
@@ -37,8 +36,6 @@ a {
     width: 300px;
     font-size: 25px;
     color: #232136;
-    text-shadow: 1px 1px 1px #817c9c;
-    border-radius: 10px;
 }
 
 .note_button {
@@ -47,7 +44,6 @@ a {
     width: 25px;
     font-size: 25px;
     color: #232136;
-    text-shadow: 1px 1px 1px #817c9c;
 }
 
 .note_container {
@@ -69,11 +65,10 @@ a {
     gap: 12px;
     font-size: 1rem;
     color: #232136;
-    text-shadow: 1px 1px 1px #2a273f;
     background-color: #9ccfd8;
     border-radius: 25px; 
     text-align: right;
-    
+    font-family: 'Roboto', sans-serif;
 }
 
 h1 {
@@ -82,7 +77,6 @@ h1 {
     color: #191724;
     text-align: center;
 }
-
 
 .close_button li {
     text-align: center;
@@ -150,7 +144,6 @@ footer {
     }
 
     .note_container {
-        grid-template-columns: 3px 1fr;
         grid-template-areas: 
         's h h'
         's m m'
