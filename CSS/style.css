@@ -68,6 +68,7 @@ a {
     background-color: #9ccfd8;
     border-radius: 25px; 
     text-align: right;
+    align-items: inherit;
     font-family: 'Roboto', sans-serif;
 }
 
