@@ -142,15 +142,7 @@ footer {
         margin-left: 10px;
     }
 
-    .close_button {
-        justify-self: start;
-    }
-
     .note_container {
-        grid-template-areas: 
-        's h h'
-        's m m'
-        'f f f';
         grid-template-columns: auto;
     }
 }
