@@ -63,6 +63,7 @@ a {
     background-color: #9ccfd8;
     text-align: center;
     font-family: 'Roboto', sans-serif;
+    border-radius: 25px;
 }
 
 .close_button {
@@ -87,11 +88,11 @@ h1 {
     list-style: square;
 }
 
-h1 + ul, .background, .background > a {
+h1 + ul, .note_list, .note_list > a {
     background-color: #9ccfd8;
 }
 
-.background {
+.note_list {
     list-style-type: square;  
 }
 
