@@ -1,13 +1,52 @@
 
+
+
 // Add a function to add dark button to the app
 // the alert works but need to actualy change the color theme
 function change_theme() {
-    // should target heading element 
+    // should target heading element --> document.querySelectorAll('.header .navigation')
     const btn = document.createElement('button');
-    btn.innerText = 'Change Color';
-    document.body.appendChild(btn); 
+    btn.innerText = 'Change Theme';
+    document.body.append(btn); 
     btn.addEventListener('click', () => {
-        alert('Click the button again will change the theme back to the light mode');
+        alert('Click the button again to change the theme');
+        document.querySelector('.container').classList.add("ChangeTheme")
+        let toggleStatus = document.querySelector(".ChangeTheme").classList.toggle('.container')
+        if (toggleStatus === false) {
+            document.querySelector('.ChangeTheme').style.backgroundColor = '#f2e9de'
+            document.querySelector('p').style.backgroundColor = '#f2e9de'
+            document.querySelector('footer').style.backgroundColor = '#f2e9de'
+            document.querySelector('.note_container').style.backgroundColor = '#f2e9de'
+            document.querySelector('.header').style.backgroundColor = '#f2e9de'
+            document.querySelector('.note').style.backgroundColor = '#f2e9de'
+            document.querySelector('.note_button').style.backgroundColor = '#f2e9de'
+            document.querySelector('.delete').style.backgroundColor = '#f2e9de'
+            document.querySelector('.save').style.backgroundColor = '#f2e9de'
+            document.querySelector('.save_delete').style.backgroundColor = '#f2e9de'
+            document.querySelector('ul').style.backgroundColor = '#f2e9de'
+            document.querySelector('a').style.backgroundColor = '#f2e9de'
+            document.querySelector('.navigation').style.backgroundColor = '#f2e9de'
+            document.querySelectorAll(".Navigation")[1].style.backgroundColor = '#f2e9de'
+            document.querySelectorAll(".Navigation a")[1].style.backgroundColor = '#f2e9de'
+            console.log(toggleStatus)
+        } else {
+            console.log(toggleStatus)
+            document.querySelector('p').style.backgroundColor = '#555169'
+            document.querySelector('footer').style.backgroundColor = '#555169'
+            document.querySelector('.note_container').style.backgroundColor = '#555169'
+            document.querySelector('.header').style.backgroundColor = '#555169'
+            document.querySelector('.note').style.backgroundColor = '#555169'
+            document.querySelector('.note_button').style.backgroundColor = '#555169'
+            document.querySelector('.delete').style.backgroundColor = '#555169'
+            document.querySelector('.save').style.backgroundColor = '#555169'
+            document.querySelector('.save_delete').style.backgroundColor = '#555169'
+            document.querySelector('ul').style.backgroundColor = '#555169'
+            document.querySelector('a').style.backgroundColor = '#555169'
+            document.querySelector('.navigation').style.backgroundColor = '#555169'
+            document.querySelector('li a').style.backgroundColor = '#555169'
+            document.querySelectorAll(".Navigation")[1].style.backgroundColor = '#555169'
+            document.querySelectorAll(".Navigation a")[1].style.backgroundColor = '#555169'
+        }
     })
 }
 
