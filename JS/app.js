@@ -7,7 +7,7 @@ function change_theme() {
     // should target heading element --> document.querySelectorAll('.header .navigation')
     const btn = document.createElement('button');
     btn.innerText = 'Change Theme';
-    document.body.append(btn); 
+    document.getElementById('header').appendChild(btn); 
     btn.addEventListener('click', () => {
         alert('Click the button again to change the theme');
         document.querySelector('.container').classList.add("ChangeTheme")
@@ -17,38 +17,36 @@ function change_theme() {
             document.querySelector('p').style.backgroundColor = '#f2e9de'
             document.querySelector('footer').style.backgroundColor = '#f2e9de'
             document.querySelector('.note_container').style.backgroundColor = '#f2e9de'
-            document.querySelector('.header').style.backgroundColor = '#f2e9de'
-            // document.querySelector('.note').style.backgroundColor = '#f2e9de'
-            // document.querySelector('.note_button').style.backgroundColor = '#f2e9de'
-            // document.querySelector('.delete').style.backgroundColor = '#f2e9de'
-            // document.querySelector('.save').style.backgroundColor = '#f2e9de'
-            // document.querySelector('.save_delete').style.backgroundColor = '#f2e9de'
+            document.querySelector('#header').style.backgroundColor = '#f2e9de'
+            document.querySelector('.note').style.backgroundColor = '#f2e9de'
+            document.querySelector('.create_button').style.backgroundColor = '#f2e9de'
             document.querySelector('ul').style.backgroundColor = '#f2e9de'
             document.querySelector('a').style.backgroundColor = '#f2e9de'
             document.querySelector('.navigation').style.backgroundColor = '#f2e9de'
             document.querySelectorAll(".Navigation")[1].style.backgroundColor = '#f2e9de'
             document.querySelectorAll(".Navigation a")[1].style.backgroundColor = '#f2e9de'
-            document.querySelector('.create_button').style.backgroundColor = '#f2e9de'
+            document.querySelector('.save').style.backgroundColor = '#f2e9de'
+            document.querySelector('.delete').style.backgroundColor = '#f2e9de'
+            document.querySelector('#note_button').style.backgroundColor = '#f2e9de'
+            
             console.log(toggleStatus)
-        } else {
+        } else {  // <-- maybe add a if statment 
             document.querySelector('body').style.backgroundColor = '#f2e9de'
             document.querySelector('p').style.backgroundColor = '#555169'
             document.querySelector('footer').style.backgroundColor = '#555169'
             document.querySelector('.note_container').style.backgroundColor = '#555169'
-            document.querySelector('.header').style.backgroundColor = '#555169'
-            // document.querySelector('.note').style.backgroundColor = '#555169'
-            // document.querySelector('.note_button').style.backgroundColor = '#555169'
-            // document.querySelector('.delete').style.backgroundColor = '#555169'
-            // document.querySelector('.save').style.backgroundColor = '#555169'
-            // document.querySelector('.save_delete').style.backgroundColor = '#555169'
+            document.querySelector('#header').style.backgroundColor = '#555169'
+            document.querySelector('.note').style.backgroundColor = '#555169'
+            document.querySelector('.create_button').style.backgroundColor = '#555169'
             document.querySelector('ul').style.backgroundColor = '#555169'
             document.querySelector('a').style.backgroundColor = '#555169'
             document.querySelector('.navigation').style.backgroundColor = '#555169'
             document.querySelector('li a').style.backgroundColor = '#555169'
             document.querySelectorAll(".Navigation")[1].style.backgroundColor = '#555169'
             document.querySelectorAll(".Navigation a")[1].style.backgroundColor = '#555169'
-            document.querySelector('.create_button').style.backgroundColor = '#555169'
-            console.log(toggleStatus)
+            document.querySelector('.save').style.backgroundColor = '#555169'
+            document.querySelector('.delete').style.backgroundColor = '#555169'
+            document.querySelector('#note_button').style.backgroundColor = '#555169'
         }
     })
 }
@@ -63,8 +61,11 @@ function new_note () {
     create_note.classList.add('create_note')
     let toggleStatus = document.querySelector(".create_note").classList.toggle('.create_button')
     if (toggleStatus === false) {
-        let new_row = document.createElement('div');
-        new_row.classList.add("note");
+        // let newDiv = document.createElement('div');
+        // newDiv.classList.add("save_delete");
+        
+        // const currentDiv = document.getElementById("story");
+        // document.body.insertBefore(newDiv, currentDiv);
 
         let createButton = document.createElement('button');
         createButton.innerText = '+';
@@ -80,17 +81,14 @@ function new_note () {
         newNote.setAttribute("id", "story");
         document.getElementById("note_button").appendChild(newNote);
         
-        // let saveButton = document.createElement('button');
-        // saveButton.innerText = 'save';
-        // saveButton.className = 'save';
-        parent.insertAdjacentHTML('beforeend', '<button class="save" type="button"> save</button>');
-        parent.insertAdjacentHTML('beforeend', '<button class="delete" type="button"> delete</button>');
-        // let note = document.createElement("textarea");
-        // note.name = "post";
-        // note.maxLength = "5000";
-        // note.cols = "40";
-        // note.rows = "15";
-        // note.style.backgroundColor = '#e0def4';
+    
+
+        parent.insertAdjacentHTML('beforeend', '<div class="save_delete" </div>');
+        let save_delete = document.querySelector(".save_delete")
+
+        save_delete.insertAdjacentHTML('beforeend', '<button class="save" type="button"> save</button>');
+        save_delete.insertAdjacentHTML('beforeend', '<button class="delete" type="button"> delete</button>');
+     
         
         // document.body.appendChild(note);
         // document.querySelector('.create_button').innerHTML = "your note here";
