@@ -38,7 +38,7 @@ a {
     color: #232136;
 }
 
-.note_button {
+#note_button {
     border: 0;
     height: 25px;
     width: 25px;
@@ -107,6 +107,7 @@ h1 + ul, .note_list, .note_list > a {
     background-color: #e0def4;
     border-radius: 25px;
 }
+
 
 .save_delete {
     align-self: flex-end;
