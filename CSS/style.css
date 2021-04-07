@@ -8,7 +8,7 @@ a {
     color: #393552;
 }
 
-.header {
+#header {
     grid-area: h;
     text-align: right;
     font-family: 'Roboto', sans-serif;
@@ -22,6 +22,15 @@ a {
 .open_button {
     grid-area: s;
     display:flex;
+    font-size: 1rem;
+    justify-self: start;
+    color: #232136;
+    background-color: #9ccfd8;
+    border-radius: 25px;
+}
+
+.open_nav {
+    grid-area: s;
     font-size: 1rem;
     justify-self: start;
     color: #232136;
@@ -98,7 +107,7 @@ h1 + ul, .note_list, .note_list > a {
 
 .note {
     grid-area: m;
-    place-self: center;
+    place-self:inherit;
     display: flex;
     gap: 10px;
 }

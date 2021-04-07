@@ -13,6 +13,7 @@ function change_theme() {
         document.querySelector('.container').classList.add("ChangeTheme")
         let toggleStatus = document.querySelector(".ChangeTheme").classList.toggle('.container')
         if (toggleStatus === false) {
+            document.querySelector('*').style.backgroundColor = '#f2e9de'
             document.querySelector('.ChangeTheme').style.opacity = ""
             document.querySelector('p').style.backgroundColor = '#f2e9de'
             document.querySelector('footer').style.backgroundColor = '#f2e9de'
@@ -31,7 +32,8 @@ function change_theme() {
             
             console.log(toggleStatus)
         } else {  // <-- maybe add a if statment 
-            document.querySelector('body').style.backgroundColor = '#f2e9de'
+            // document.querySelector('body').style.backgroundColor = '#f2e9de'
+            document.querySelector('*').style.backgroundColor = '#555169'
             document.querySelector('p').style.backgroundColor = '#555169'
             document.querySelector('footer').style.backgroundColor = '#555169'
             document.querySelector('.note_container').style.backgroundColor = '#555169'
@@ -60,7 +62,7 @@ function new_note () {
     let create_note = document.querySelector('.create_button')
     create_note.classList.add('create_note')
     let toggleStatus = document.querySelector(".create_note").classList.toggle('.create_button')
-    if (toggleStatus === false) {
+    if (toggleStatus === true) {
         // let newDiv = document.createElement('div');
         // newDiv.classList.add("save_delete");
         
@@ -80,49 +82,78 @@ function new_note () {
         // create_note.parentNode.replaceChild(newNote, create_note);
         newNote.setAttribute("id", "story");
         document.getElementById("note_button").appendChild(newNote);
-        
-    
 
         parent.insertAdjacentHTML('beforeend', '<div class="save_delete" </div>');
         let save_delete = document.querySelector(".save_delete")
 
         save_delete.insertAdjacentHTML('beforeend', '<button class="save" type="button"> save</button>');
         save_delete.insertAdjacentHTML('beforeend', '<button class="delete" type="button"> delete</button>');
-     
-        
-        // document.body.appendChild(note);
-        // document.querySelector('.create_button').innerHTML = "your note here";
+        remove_note = document.querySelector('.delete')
+        save_note = document.querySelector('.save')
+        save_deleteDiv = document.querySelector('.save_delete')
         console.log(toggleStatus)
+        
+        save_deleteDiv.addEventListener('click', (e) => {
+            // let toggleStatus = document.querySelector("#note_button").classList.toggle('.create_button')
+            if (e.target.innerText === 'save') {
+                   alert('Note has been saved')
+            } else {
+                alert('Note has been deleted');
+                let toggleStatus = document.querySelector("#note_button").classList.toggle('.create_button')
+                parent.remove()
+            }
+        })
+        // remove_note.addEventListener('click', (e) => {
+        //     alert('Note has been deleted');
+        //     let toggleStatus = document.querySelector("#note_button").classList.toggle('.create_button')
+        //     if (toggleStatus === true) {
+        //         parent.remove()
+        //         let createButton = document.createElement('button');
+        //         createButton.innerText = '+';
+        //         // createButton.setAttribute("id", "note_button");
+        //         // create_note.parentNode.replaceChild(createButton, create_note);
+        //         // let parent = document.querySelector('#note_button')
+        //     }      
+        // })
+        // save_note.addEventListener('click', (e) => {
+        //     alert('Note has been saved');
+        // })
     }
-    else {
-        document.querySelector('.create_button').innerHTML = "+ create a new note";
-        document.querySelector('textarea').remove();
-    }
+    // else {
+    //     document.querySelector('.create_button').innerHTML = "+ create a new note";
+    //     // document.querySelector('textarea').remove();
+    // }
    
-    //if new note is clicked:    
-        //clicking on the new note button in index.html should open
-        //a note taking area along with a save and cancel buttom
-            //if save is clicked
-                
-                // should remove the note taking area and buttons and
-                    //return the title and body of the note to push 
-                    // make sure to return (object)
-                    //to new_notes function  
-            //if delete is clicked 
-                //text area should close without saving the note
+  
 
 }
+    
 
+// notes();  
 
-new_note();  // <---- figure out how to target .create_button
+// function delete_notes (remove_notes) {
+   
+//     console.log(remove_notes)
+// //     remove_notes.addEventListener('click', (e) => {
+// //         alert('Note has been deleted');
+// //         let toggleStatus = document.querySelector("#note_button").classList.toggle('.create_button')
+// //         if (toggleStatus === true) {
+// //             parent.remove()
+// //             let createButton = document.createElement('button');
+// //             createButton.innerText = '+';
+// //         } 
+// //  })
+// }
+
+// delete_notes(new_note());
 
 // let note = document.getElementById("#story").value;   <-- can use this to read the value 
 
 // - use document.querySelectorAll("li") to access the stored notesArray
-function store_notes (save_note, note1or2) {
+// function store_notes (save_note, note1or2) {
     // get the note_content to this function
     // and push to the notesArray
-    let notesArray = [{}];  // <---- this array should only take two notes
+    // let notesArray = [{}];  // <---- this array should only take two notes
     // maybe check if there is less than two object in the arrary:
         /// notesArrary.push 
         // return notesArrary
@@ -135,15 +166,48 @@ function store_notes (save_note, note1or2) {
             // when found the note should be displayed in the main 
             // with a close note button
                 // if close note is clicked, the app returns to ints original state
+// }
+
+
+// store_notes(save_note, note1or2); // <----- note1or2 is talking about the li in the sidebar
+
+
+
+
+function slidebar (OpenClose) {
+    OpenClose.addEventListener('click', (e) => {
+        console.log(e.target.innerText)
+        OpenClose.classList.add('slidebar')
+        let toggleStatus = document.querySelector(".slidebar").classList.toggle(".open_nav")
+        let getSidebar = document.querySelector('.slidebar')
+        let open_button = document.querySelector(".open_button")
+        let closeButton = document.createElement('button');
+        closeButton.innerText = '<<';
+        closeButton.setAttribute("class", "close_button");
+        let close_button = document.querySelector('.close_button');
+        let title = document.createElement('h1');
+        document.createElement("ul");
+        let note_lists = document.querySelector("ul")
+            
+        title.innerText = 'my notes';
+
+            if (e.target.innerText === '>>') {
+            open_button.remove();
+            getSidebar.appendChild(closeButton);
+            getSidebar.appendChild(title);
+            getSidebar.appendChild(note_lists)
+        } else {
+            close_button.remove();
+            document.querySelector('h1').remove();
+            open_button = document.createElement('button');
+            open_button.innerText = '>>';
+            open_button.setAttribute("class", "open_button");
+            getSidebar.appendChild(open_button)
+        
+            
+        }
+    })
 }
 
 
-store_notes(save_note, note1or2); // <----- note1or2 is talking about the li in the sidebar
-
-
-
-
-
-
-
-
+slidebar(document.querySelector('.open_nav'));
