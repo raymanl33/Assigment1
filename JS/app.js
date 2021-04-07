@@ -178,7 +178,8 @@ function slidebar (OpenClose) {
     OpenClose.addEventListener('click', (e) => {
         console.log(e.target.innerText)
         OpenClose.classList.add('slidebar')
-        let toggleStatus = document.querySelector(".slidebar").classList.toggle(".open_nav")
+        let open_nav = document.querySelector("open_nav")
+        document.querySelector(".slidebar").classList.toggle(".open_nav")
         let getSidebar = document.querySelector('.slidebar')
         let open_button = document.querySelector(".open_button")
         let closeButton = document.createElement('button');
@@ -186,18 +187,27 @@ function slidebar (OpenClose) {
         closeButton.setAttribute("class", "close_button");
         let close_button = document.querySelector('.close_button');
         let title = document.createElement('h1');
-        document.createElement("ul");
-        let note_lists = document.querySelector("ul")
-            
         title.innerText = 'my notes';
+        let note_lists = document.createElement("ul");
+        let remove_lists = document.querySelectorAll('ul')[1]
+
+        // let notes = document.querySelector("ul")
+  
+        // try  let note_lists = document.querySelector("h1 > ul")
+        
 
             if (e.target.innerText === '>>') {
             open_button.remove();
+            getSidebar.classList.remove('open_nav')
             getSidebar.appendChild(closeButton);
             getSidebar.appendChild(title);
             getSidebar.appendChild(note_lists)
+            note_lists.insertAdjacentHTML('afterbegin', '<li class="note_list"> <a href="">note one</a></li>')
+            note_lists.insertAdjacentHTML('beforeend', '<li class="note_list"> <a href="">note two</a></li>')
         } else {
             close_button.remove();
+            getSidebar.classList.add('open_nav')
+            remove_lists.remove()
             document.querySelector('h1').remove();
             open_button = document.createElement('button');
             open_button.innerText = '>>';
