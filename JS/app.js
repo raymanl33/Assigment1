@@ -93,18 +93,18 @@ function new_note () {
             let note = document.querySelector('#story').value
             if (e.target.innerText === 'save') {
                 notes_split = note.split('\n\n')
-                console.log(notes_split)
-                notesArrary.push(notes_split)
+                
+                notesArrary.push(storeNotes(notes_split))
                 console.log(notesArrary)
                 alert('Note has been saved')
                 document.querySelector('#story').value = 'Type your title and hit enter twice to write notes in body'
                 // still need to remove the note taking area after clicked 
-                // console.log(saveNotes)
-                document.querySelector('#note_button').style.display = 'none'
-                let Re_createButton = document.createElement('button');
-                Re_createButton.innerText = '+ create a new note';
-                Re_createButton.setAttribute("class", "create_button");
-                note_button.parentNode.replaceChild(Re_createButton, note_button);
+
+                // document.querySelector('#note_button').style.display = 'none'
+                // let Re_createButton = document.createElement('button');
+                // Re_createButton.innerText = '+ create a new note';
+                // Re_createButton.setAttribute("class", "create_button");
+                // note_button.parentNode.replaceChild(Re_createButton, note_button);
                   
                 return notes_split
                    
@@ -148,12 +148,12 @@ function new_note () {
 }
     
 
-function storeNotes() {
-    let arr = new_note()
-     saveNotes = {title: arr[0], body: arr[1]} 
+function storeNotes(arr) {
+    return saveNotes = {title: arr[0], body: arr[1]} 
   
 }
 
+storeNotes(notesArrary);
 // notes();  
 
 // function delete_notes (remove_notes) {
@@ -205,9 +205,18 @@ function slidebar (OpenClose) {
             
             note_lists.insertAdjacentHTML('afterbegin', '<li class="note_list"></a></li>')
             note_lists.insertAdjacentHTML('beforeend', '<li class="note_list"></a></li>')
+            let NoteTitles = document.querySelectorAll('.note_list')
             for (const note of notesArrary) {
-                document.querySelectorAll('.note_list')[0].innerText = note
-                document.querySelectorAll('.note_list')[1].innerText = note
+                if (NoteTitles[0].innerText.length === 0 || NoteTitles[1].innerText.length >= 1){
+                    const {title} = note
+                    NoteTitles[0].innerText = title
+                 
+                } else {
+                    const {title} = note
+                    NoteTitles[1].innerText = title
+                   
+                }
+                
             }
 
             let note_lists_class = document.querySelector(".note_list")
@@ -237,9 +246,4 @@ slidebar(document.querySelector('.open_nav'));
 
 
 
-function stored_notes () {
-    let km = slidebar()
-    console.log(km)
-
-}
 
