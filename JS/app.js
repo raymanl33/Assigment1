@@ -1,8 +1,6 @@
 
+let notesArrary = []
 
-
-// Add a function to add dark button to the app
-// the alert works but need to actualy change the color theme
 function change_theme() {
     // should target heading element --> document.querySelectorAll('.header .navigation')
     const btn = document.createElement('button');
@@ -49,26 +47,25 @@ function change_theme() {
             document.querySelector('.save').style.backgroundColor = '#555169'
             document.querySelector('.delete').style.backgroundColor = '#555169'
             document.querySelector('#note_button').style.backgroundColor = '#555169'
+            
         }
     })
 }
 
 change_theme();
 
-// let list = document.querySelector('ul');  < ----
-// list.insertAdjacentHTML('beforebegin', '<p>heelo</P>');
+
 
 function new_note () {
+    // let storedNotes = storeNotes()
+
+    // console.log(storedNotes)
     let create_note = document.querySelector('.create_button')
     create_note.classList.add('create_note')
     let toggleStatus = document.querySelector(".create_note").classList.toggle('.create_button')
     if (toggleStatus === true) {
-        // let newDiv = document.createElement('div');
-        // newDiv.classList.add("save_delete");
-        
-        // const currentDiv = document.getElementById("story");
-        // document.body.insertBefore(newDiv, currentDiv);
 
+        // document.querySelector('.create_button').style.display = 'none'
         let createButton = document.createElement('button');
         createButton.innerText = '+';
         createButton.setAttribute("id", "note_button");
@@ -78,8 +75,7 @@ function new_note () {
         let newNote = document.createElement('textarea');
         newNote.cols = "40";
         newNote.rows = "20";
-        newNote.innerText = 'your note here';
-        // create_note.parentNode.replaceChild(newNote, create_note);
+        newNote.innerText = 'Type your title and hit enter twice to write notes in body';
         newNote.setAttribute("id", "story");
         document.getElementById("note_button").appendChild(newNote);
 
@@ -94,13 +90,36 @@ function new_note () {
         console.log(toggleStatus)
         
         save_deleteDiv.addEventListener('click', (e) => {
-            // let toggleStatus = document.querySelector("#note_button").classList.toggle('.create_button')
+            let note = document.querySelector('#story').value
             if (e.target.innerText === 'save') {
-                   alert('Note has been saved')
+                notes_split = note.split('\n\n')
+                console.log(notes_split)
+                notesArrary.push(notes_split)
+                console.log(notesArrary)
+                alert('Note has been saved')
+                document.querySelector('#story').value = 'Type your title and hit enter twice to write notes in body'
+                // still need to remove the note taking area after clicked 
+                // console.log(saveNotes)
+                document.querySelector('#note_button').style.display = 'none'
+                let Re_createButton = document.createElement('button');
+                Re_createButton.innerText = '+ create a new note';
+                Re_createButton.setAttribute("class", "create_button");
+                note_button.parentNode.replaceChild(Re_createButton, note_button);
+                  
+                return notes_split
+                   
             } else {
                 alert('Note has been deleted');
-                let toggleStatus = document.querySelector("#note_button").classList.toggle('.create_button')
-                parent.remove()
+                
+                // still need to remove the note taking area after clicked 
+                document.querySelector('#note_button').style.display = 'none'
+                let Re_createButton = document.createElement('button');
+                Re_createButton.innerText = '+ create a new note';
+                Re_createButton.setAttribute("class", "create_button");
+                note_button.parentNode.replaceChild(Re_createButton, note_button);
+
+                // document.querySelector('.create_button').style.display = 'block'
+
             }
         })
         // remove_note.addEventListener('click', (e) => {
@@ -129,6 +148,12 @@ function new_note () {
 }
     
 
+function storeNotes() {
+    let arr = new_note()
+     saveNotes = {title: arr[0], body: arr[1]} 
+  
+}
+
 // notes();  
 
 // function delete_notes (remove_notes) {
@@ -149,27 +174,7 @@ function new_note () {
 
 // let note = document.getElementById("#story").value;   <-- can use this to read the value 
 
-// - use document.querySelectorAll("li") to access the stored notesArray
-// function store_notes (save_note, note1or2) {
-    // get the note_content to this function
-    // and push to the notesArray
-    // let notesArray = [{}];  // <---- this array should only take two notes
-    // maybe check if there is less than two object in the arrary:
-        /// notesArrary.push 
-        // return notesArrary
-    //else:
-        // notesArrary.push last object in the arrary which it should be note two
-        // return notesArrary
-    
-    // use a for loop to loop though the notesArrary
-        // to bring out the note the user specified
-            // when found the note should be displayed in the main 
-            // with a close note button
-                // if close note is clicked, the app returns to ints original state
-// }
 
-
-// store_notes(save_note, note1or2); // <----- note1or2 is talking about the li in the sidebar
 
 
 
@@ -190,20 +195,30 @@ function slidebar (OpenClose) {
         title.innerText = 'my notes';
         let note_lists = document.createElement("ul");
         let remove_lists = document.querySelectorAll('ul')[1]
-
-        // let notes = document.querySelector("ul")
-  
-        // try  let note_lists = document.querySelector("h1 > ul")
         
-
             if (e.target.innerText === '>>') {
             open_button.remove();
             getSidebar.classList.remove('open_nav')
             getSidebar.appendChild(closeButton);
             getSidebar.appendChild(title);
             getSidebar.appendChild(note_lists)
-            note_lists.insertAdjacentHTML('afterbegin', '<li class="note_list"> <a href="">note one</a></li>')
-            note_lists.insertAdjacentHTML('beforeend', '<li class="note_list"> <a href="">note two</a></li>')
+            
+            note_lists.insertAdjacentHTML('afterbegin', '<li class="note_list"></a></li>')
+            note_lists.insertAdjacentHTML('beforeend', '<li class="note_list"></a></li>')
+            for (const note of notesArrary) {
+                document.querySelectorAll('.note_list')[0].innerText = note
+                document.querySelectorAll('.note_list')[1].innerText = note
+            }
+
+            let note_lists_class = document.querySelector(".note_list")
+            note_lists_class.addEventListener('click', (e) => {
+                console.log(e.target.innerText)
+                if (e.target.innerText === document.querySelectorAll('.note_list')[0]) {
+                    console.log(notesArrary)
+                }
+
+                
+            })
         } else {
             close_button.remove();
             getSidebar.classList.add('open_nav')
@@ -213,11 +228,18 @@ function slidebar (OpenClose) {
             open_button.innerText = '>>';
             open_button.setAttribute("class", "open_button");
             getSidebar.appendChild(open_button)
-        
-            
         }
     })
 }
 
 
 slidebar(document.querySelector('.open_nav'));
+
+
+
+function stored_notes () {
+    let km = slidebar()
+    console.log(km)
+
+}
+
