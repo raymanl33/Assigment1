@@ -119,7 +119,7 @@ h1 + ul, .note_list, .note_list > a {
 
 
 .save_delete {
-    align-self: flex-end;
+    text-align: right;
 }
 
 .save {
