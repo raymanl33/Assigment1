@@ -8,7 +8,7 @@ function change_theme() {
     btn.addEventListener('click', () => {
         alert('Click the button again to change the theme');
         document.querySelector('.container').classList.add("ChangeTheme")
-        let toggleStatus = document.querySelector(".ChangeTheme").classList.toggle('.container')
+        const toggleStatus = document.querySelector(".ChangeTheme").classList.toggle('.container')
         if (toggleStatus === false) {
             document.querySelector('*').style.backgroundColor = '#f2e9de'
             document.querySelector('p').style.backgroundColor = '#f2e9de'
@@ -54,10 +54,12 @@ change_theme();
 function CreateNewNote () {
     let create_note = document.querySelector('.create_button')
     create_note.classList.add('create_note')
+ 
     let toggleStatus = document.querySelector(".create_note").classList.toggle('.create_button')
     if (toggleStatus === true) {
-        
+                
         CreateTextarea();
+
         insertSaveDelete();
         console.log(toggleStatus)
         
@@ -70,7 +72,7 @@ function CreateNewNote () {
                 console.log(notesArrary)
                 alert('Note has been saved')
                 cleanUp()
-             
+            
             } else {
                 alert('Note has been deleted');
                 cleanUp()
@@ -90,11 +92,17 @@ function CreateTextarea() {
     newNote.innerText = 'Type your title and hit enter twice to write notes in body';
     newNote.setAttribute("id", "story");
     create_note.appendChild(newNote);
+    newNote.addEventListener('click', (e) => {
+        (e).stopImmediatePropagation();
+    });
+
 }
 
 
 function insertSaveDelete () {
+    
     let create_note = document.querySelector('.create_button')
+   
     create_note.insertAdjacentHTML('beforeend', '<div class="save_delete" </div>');
     let save_delete = document.querySelector(".save_delete")
     save_delete.style.display = 'inline-flex'
@@ -103,6 +111,7 @@ function insertSaveDelete () {
     remove_note = document.querySelector('.delete')
     save_note = document.querySelector('.save')
     save_deleteDiv = document.querySelector('.save_delete')
+
 }
 
 
@@ -146,7 +155,7 @@ function sidebar (OpenClose) {
             getSidebar.appendChild(note_lists)
             note_lists.insertAdjacentHTML('afterbegin', '<li class="note_list"></a></li>')
             note_lists.insertAdjacentHTML('beforeend', '<li class="note_list"></a></li>')
-            loopArray()
+            loopArray();
 
         } else {
             close_button.remove();
