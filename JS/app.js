@@ -50,31 +50,15 @@ function change_theme() {
 change_theme();
 
 
-let new_notefunct = new_note();
-function new_note () {
+
+function CreateNewNote () {
     let create_note = document.querySelector('.create_button')
     create_note.classList.add('create_note')
     let toggleStatus = document.querySelector(".create_note").classList.toggle('.create_button')
-    if (toggleStatus === false) {
-        create_note.innerText = '+'
-        create_note.style.width = "30px"
-     
-        let newNote = document.createElement('textarea');
-        newNote.cols = "40";
-        newNote.rows = "20";
-        newNote.innerText = 'Type your title and hit enter twice to write notes in body';
-        newNote.setAttribute("id", "story");
-        create_note.appendChild(newNote);
-  
-        create_note.insertAdjacentHTML('beforeend', '<div class="save_delete" </div>');
-        let save_delete = document.querySelector(".save_delete")
-        save_delete.style.display = 'inline-flex'
-
-        save_delete.insertAdjacentHTML('beforeend', '<button class="save" type="button"> save</button>');
-        save_delete.insertAdjacentHTML('beforeend', '<button class="delete" type="button"> cancel</button>');
-        remove_note = document.querySelector('.delete')
-        save_note = document.querySelector('.save')
-        save_deleteDiv = document.querySelector('.save_delete')
+    if (toggleStatus === true) {
+        
+        CreateTextarea();
+        insertSaveDelete();
         console.log(toggleStatus)
         
         save_deleteDiv.addEventListener('click', (e) => {
@@ -86,9 +70,7 @@ function new_note () {
                 console.log(notesArrary)
                 alert('Note has been saved')
                 cleanUp()
-
-                return note  
-            
+             
             } else {
                 alert('Note has been deleted');
                 cleanUp()
@@ -96,7 +78,33 @@ function new_note () {
         })
     }
 }
-    
+
+
+function CreateTextarea() {
+    let create_note = document.querySelector('.create_button')
+    create_note.innerText = '+'
+    create_note.style.width = "30px"
+    let newNote = document.createElement('textarea');
+    newNote.cols = "40";
+    newNote.rows = "20";
+    newNote.innerText = 'Type your title and hit enter twice to write notes in body';
+    newNote.setAttribute("id", "story");
+    create_note.appendChild(newNote);
+}
+
+
+function insertSaveDelete () {
+    let create_note = document.querySelector('.create_button')
+    create_note.insertAdjacentHTML('beforeend', '<div class="save_delete" </div>');
+    let save_delete = document.querySelector(".save_delete")
+    save_delete.style.display = 'inline-flex'
+    save_delete.insertAdjacentHTML('beforeend', '<button class="save" type="button"> save</button>');
+    save_delete.insertAdjacentHTML('beforeend', '<button class="delete" type="button"> cancel</button>');
+    remove_note = document.querySelector('.delete')
+    save_note = document.querySelector('.save')
+    save_deleteDiv = document.querySelector('.save_delete')
+}
+
 
 function cleanUp () {
     const note = document.querySelector('#story')
@@ -136,10 +144,8 @@ function sidebar (OpenClose) {
             getSidebar.appendChild(closeButton);
             getSidebar.appendChild(title);
             getSidebar.appendChild(note_lists)
-            
             note_lists.insertAdjacentHTML('afterbegin', '<li class="note_list"></a></li>')
             note_lists.insertAdjacentHTML('beforeend', '<li class="note_list"></a></li>')
-
             loopArray()
 
         } else {
@@ -155,7 +161,6 @@ function sidebar (OpenClose) {
     })
 }
 
-
 sidebar(document.querySelector('.open_nav'));
 
 
@@ -169,10 +174,10 @@ function loopArray() {
         if (NoteTitles[0].innerText.length === 0 || NoteTitles[1].innerText.length >= 1){
             const {title} = note
             const {body} = note
-            console.log(body)
             NoteTitles[0].innerText = title
             NoteTitles0.addEventListener('click', (e) => {
-            document.querySelector('#story').value = body
+                document.querySelector('#story').value = body
+                console.log(e.target.innerText)
         })
 
         } else {
