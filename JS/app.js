@@ -59,13 +59,12 @@ function CreateNewNote () {
     if (toggleStatus === true) {
                 
         CreateTextarea();
-
+        StopPropagation()
         insertSaveDelete();
         console.log(toggleStatus)
         
         save_deleteDiv.addEventListener('click', (e) => {
             let note_value = document.querySelector('#story').value
-            let note = document.querySelector('#story')
             if (e.target.innerText === 'save') {
                 notes_split = note_value.split('\n\n')
                 notesArrary.push(storeNotes(notes_split))
@@ -92,17 +91,21 @@ function CreateTextarea() {
     newNote.innerText = 'Type your title and hit enter twice to write notes in body';
     newNote.setAttribute("id", "story");
     create_note.appendChild(newNote);
-    newNote.addEventListener('click', (e) => {
-        (e).stopImmediatePropagation();
-    });
+}
 
+
+function StopPropagation() {
+    let newNote = document.querySelector('textarea')
+    newNote.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+
+    });
 }
 
 
 function insertSaveDelete () {
-    
     let create_note = document.querySelector('.create_button')
-   
     create_note.insertAdjacentHTML('beforeend', '<div class="save_delete" </div>');
     let save_delete = document.querySelector(".save_delete")
     save_delete.style.display = 'inline-flex'
@@ -111,7 +114,6 @@ function insertSaveDelete () {
     remove_note = document.querySelector('.delete')
     save_note = document.querySelector('.save')
     save_deleteDiv = document.querySelector('.save_delete')
-
 }
 
 
