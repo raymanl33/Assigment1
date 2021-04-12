@@ -130,7 +130,7 @@ h1 + ul, .note_list, .note_list > a {
 }
 
 .delete {
-    color: #b4637a;
+    color: #575279; 
     border: 0;
     font-size: 1rem;
 }
@@ -155,6 +155,12 @@ footer {
 
     .note_container {
         grid-template-columns: auto;
+    }
+
+    #story {
+        background-color: #e0def4;
+        border-radius: 25px;
+        width: 200px;
     }
 }
 
